@@ -89,9 +89,7 @@ func EditarAluno(c *gin.Context) {
 		return
 	}
 	database.DB.Model(&aluno).UpdateColumns(aluno)
-	c.JSON(http.StatusOK, gin.H{
-		"data": "Aluno atualizado com sucesso.",
-	})
+	c.JSON(http.StatusOK, aluno)
 }
 
 func BuscarAlunoPorCPF(c *gin.Context) {
