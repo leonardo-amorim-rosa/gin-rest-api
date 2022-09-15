@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -31,6 +31,6 @@ func TestStatusCodeSaudacaoComParametro(t *testing.T) {
 
 	// testando o corpo da rsposta
 	mockDaResposta := `{"API diz:":"Olá leo, tudo bem?"}`
-	responseBody, _ := ioutil.ReadAll(resp.Body)
+	responseBody, _ := io.ReadAll(resp.Body)
 	assert.Equal(t, mockDaResposta, string(responseBody))
 }
