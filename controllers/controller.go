@@ -104,3 +104,21 @@ func BuscarAlunoPorCPF(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, aluno)
 }
+
+func ExibePaginaIndex(c *gin.Context) {
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"mensagem": "Boas vintas :)",
+	})
+}
+
+func ExibePaginasAlunos(c *gin.Context) {
+	var alunos []models.Aluno
+	database.DB.Find(&alunos)
+	c.HTML(http.StatusOK, "alunos.html", gin.H{
+		"alunos": alunos,
+	})
+}
+
+func RotaNaoEncotrada(c *gin.Context) {
+	c.HTML(http.StatusNotFound, "404.html", nil)
+}
